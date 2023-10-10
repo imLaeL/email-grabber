@@ -6,21 +6,24 @@ response = requests.get(url)
 
 data = response.json()
 
-gmail_prof = []
-hotmail_prof = []
+prof_gmail = {}
+prof_hotmail = {}
 
 for dict in data:
-        if 'gmail' in dict['email']:
-                gmail_prof.append(dict)
-        if 'hotmail' in dict['email']:
-                hotmail_prof.append(dict)
+        if 'gmail'  in dict['email']:
+                prof_gmail[dict['nome']] = dict['email']
+        elif 'hotmail' in dict['email']:
+                prof_hotmail[dict['nome']] = dict['email']
 
-print("\nGMAIL")
 
-for gmail in gmail_prof:
-        print(gmail['email'])
+print("\nGMAIL---------------------------\n")
 
-print("\nHOTMAIL\n")
+for i, j in prof_gmail.items():
+        
+        print(i, "=>", j)
 
-for hotmail in hotmail_prof:
-        print(hotmail['email'])
+print("\nHOTMAIL---------------------------\n")
+
+for i, j in prof_hotmail.items():
+        
+        print(i, "=>", j)
